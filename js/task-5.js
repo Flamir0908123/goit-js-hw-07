@@ -1,17 +1,16 @@
+
+
+
 const refs = {
-    nameInput: document.querySelector('#name-input'),
-    nameOutput: document.querySelector('#name-output'),
+  input: document.querySelector("#name-input"),
+  output: document.querySelector("#name-output"),
 };
 
-refs.nameInput.addEventListener('input', onInputChange);
-refs.nameInput.addEventListener('blur', onInputBlur);
+function onEnteringName(event) {
+  const value = event.currentTarget.value;
 
-function onInputChange(event) {
-    refs.nameOutput.textContent = event.currentTarget.value;
-};
+  refs.output.textContent =
+    value !== " ".repeat(value.length) ? value : "незнакомец";
+}
 
-function onInputBlur() {
-    if (refs.nameOutput.textContent === '') {
-        refs.nameOutput.textContent = 'незнакомец';
-    }
-};
+refs.input.addEventListener("input", onEnteringName);
